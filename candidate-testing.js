@@ -45,7 +45,17 @@ function gradeQuiz(candidateAnswers) {
   //   console.log('Your answer is incorrect')
   // }
 
-  (`Your answers were ${candidateAnswers}, and the correct answers were ${correctAnswers}`)
+ // Add a case sensitivity function to allow for alternating letters? or for beginning letters of each word to be capitalized. use a for loop to parse through each letter in a string in the candidate answers array.
+  
+
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    if (candidateAnswers[i] === correctAnswers[i] || candidateAnswers[i] === correctAnswers[i].toLowerCase() || candidateAnswers[i] === correctAnswers[i].toUpperCase()) {
+      console.log(`Your answer for question ${Number([i]) + 1} was ${candidateAnswers[i]}, which is CORRECT!`)
+    } else {
+      console.log(`Your answer for question ${Number([i]) + 1} was ${candidateAnswers[i]}, which is INCORRECT! The correct answer is ${correctAnswers[i]}.`)
+    }
+  }
+   
 
 
 
