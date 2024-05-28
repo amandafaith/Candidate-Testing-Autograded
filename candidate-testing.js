@@ -34,36 +34,41 @@ function askQuestion() {
 
 }
 
+
+
 function gradeQuiz(candidateAnswers) {
 
+
+
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-  //CODE FROM PART 1
-  // if (candidateAnswers === correctAnswers) {
-  //   console.log('Your answer is correct!')
-  // } else {
-  //   console.log('Your answer is incorrect')
-  // }
-
- // Add a case sensitivity function to allow for alternating letters? or for beginning letters of each word to be capitalized. use a for loop to parse through each letter in a string in the candidate answers array.
+  let correctForGrade = 0;
   
 
   for (let i = 0; i < candidateAnswers.length; i++) {
-    if (candidateAnswers[i] === correctAnswers[i] || candidateAnswers[i] === correctAnswers[i].toLowerCase() || candidateAnswers[i] === correctAnswers[i].toUpperCase()) {
-      console.log(`Your answer for question ${Number([i]) + 1} was ${candidateAnswers[i]}, which is CORRECT!`)
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      correctForGrade += 1
+      console.log(`Question: ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCORRECT!`)
     } else {
-      console.log(`Your answer for question ${Number([i]) + 1} was ${candidateAnswers[i]}, which is INCORRECT! The correct answer is ${correctAnswers[i]}.`)
+      correctForGrade += 0;
+      console.log(`Question: ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nINCORRECT!\nCorrect Answer: ${correctAnswers[i]}.`)
     }
   }
    
 
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = (correctForGrade/correctAnswers.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
 
 
-  return grade;
+  if (grade < 80) {
+    console.log(`Your grade is ${grade}%, so you fail. Try to get an 80% or better next time!`)
+  } else {
+    console.log(`Your grade is ${grade}%, so you pass this test!`)
+  }
+
+  return grade
 }
+
 
 
 function runProgram() {
